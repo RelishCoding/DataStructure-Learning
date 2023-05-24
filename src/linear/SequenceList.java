@@ -10,9 +10,9 @@ public class SequenceList<T> implements Iterable<T>{
     private int N;
 
     //构造方法
-    public SequenceList(int capactity){
+    public SequenceList(int capacity){
         //初始化数组
-        this.eles=(T[]) new Object[capactity];
+        this.eles=(T[]) new Object[capacity];
         //初始化长度
         this.N=0;
     }
@@ -42,25 +42,32 @@ public class SequenceList<T> implements Iterable<T>{
 
     //向线性表中添加元素t
     public void insert(T t){
+        /*if (N==eles.length)
+            throw new RuntimeException("当前表已满");*/
+
         if (N==eles.length)
-            throw new RuntimeException("当前表已满");
+            reSize(2*eles.length);
+
         eles[N++]=t;
     }
 
     //在i元素处插入元素t
     public void insert(int i,T t){
-        if (i==eles.length){
+        /*if (i==eles.length){
             throw new RuntimeException("当前表已满");
-        }
+        }*/
         if (i<0 || i>N){
             throw new RuntimeException("插入的位置不合法");
         }
 
+        if (N==eles.length)
+            reSize(2*eles.length);
+
         //先把i索引处的元素及其后面的元素一次向后移一位
-        for (int index=N;index>i;index--){
-            eles[index]=eles[index-1];
+        for (int index = N; index>i; index--){
+            eles[index] = eles[index-1];
         }
-        //再把t元素放到i索引处即可
+        //再把t元素放 到i索引处即可
         eles[i]=t;
         N++;
     }
@@ -74,10 +81,14 @@ public class SequenceList<T> implements Iterable<T>{
         //记录索引i处的值
         T result=eles[i];
         //索引i后面的元素依次向前移动一位即可
-        for (int index=i;index<N-1;index++){
-            eles[index]=eles[index+1];
+        for (int index=i; index<N-1; index++){
+            eles[index] = eles[index+1];
         }
         N--;
+
+        if (N< eles.length/4)
+            reSize(eles.length/2);
+
         return result;
     }
 
@@ -94,6 +105,20 @@ public class SequenceList<T> implements Iterable<T>{
         return -1;
     }
 
+    //根据参数newSize，重置eles的大小
+    public void reSize(int newSize){
+        //定义一个临时数组，指向原数组
+        T[] tmp=eles;
+
+        //创建新数组
+        eles=(T[])new Object[newSize];
+
+        //把原数组的数据拷贝到新数组即可
+        for (int i = 0; i < N; i++) {
+            eles[i]=tmp[i];
+        }
+    }
+
     @Override
     public String toString() {
         return "SequenceList{" +
@@ -108,18 +133,18 @@ public class SequenceList<T> implements Iterable<T>{
     }
 
     private class SIterator implements Iterator{
-        private int cusor;
+        private int cursor;
         public SIterator(){
-            this.cusor=0;
+            this.cursor =0;
         }
         @Override
         public boolean hasNext() {
-            return cusor<N;
+            return cursor <N;
         }
 
         @Override
         public Object next() {
-            return eles[cusor++];
+            return eles[cursor++];
         }
     }
 }
