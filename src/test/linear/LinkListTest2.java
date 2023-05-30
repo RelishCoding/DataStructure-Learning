@@ -2,7 +2,7 @@ package test.linear;
 
 import linear.LinkList;
 
-public class LinkListTest {
+public class LinkListTest2 {
     public static void main(String[] args) {
         //创建单向链表对象
         LinkList<String> sl = new LinkList<>();
@@ -17,16 +17,11 @@ public class LinkListTest {
             System.out.println(s);
         }
 
-        //测试获取
-        String getResult=sl.get(1);
-        System.out.println("获取索引1处的结果为："+getResult);
+        System.out.println("------------");
 
-        //测试删除
-        String removeResult = sl.remove(0);
-        System.out.println("删除索引0处的元素是："+removeResult);
-
-        //测试清空
-        sl.clear();
-        System.out.println("清空后线性表中的元素个数为："+sl.length());
+        sl.reverse();
+        for (String s : sl) {
+            System.out.println(s);
+        }
     }
 }
