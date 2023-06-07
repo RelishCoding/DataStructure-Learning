@@ -2,13 +2,13 @@ package test.linear;
 
 public class FastSlowTest {
     public static void main(String[] args) throws Exception {
-        Node<String> first = new Node<String>("aa", null);
-        Node<String> second = new Node<String>("bb", null);
-        Node<String> third = new Node<String>("cc", null);
-        Node<String> fourth = new Node<String>("dd", null);
-        Node<String> fifth = new Node<String>("ee", null);
-        Node<String> six = new Node<String>("ff", null);
-        Node<String> seven = new Node<String>("gg", null);
+        Node<String> first = new Node<>("aa", null);
+        Node<String> second = new Node<>("bb", null);
+        Node<String> third = new Node<>("cc", null);
+        Node<String> fourth = new Node<>("dd", null);
+        Node<String> fifth = new Node<>("ee", null);
+        Node<String> six = new Node<>("ff", null);
+        //Node<String> seven = new Node<>("gg", null);
 
         //完成结点之间的指向
         first.next = second;
@@ -16,7 +16,7 @@ public class FastSlowTest {
         third.next = fourth;
         fourth.next = fifth;
         fifth.next = six;
-        six.next = seven;
+        //six.next = seven;
 
         //查找中间值
         String mid = getMid(first);
@@ -33,6 +33,7 @@ public class FastSlowTest {
         Node<String> slow=first;
         //使用两个指针遍历链表，当快指针指向的结点没有下一个结点了就可以结束
         //结束后满指针指向的结点就是中间值
+        //偶数个结点最后fast==null，奇数个结点最后fast.next==null
         while (fast!=null && fast.next!=null){
             //变化fast和slow的值
             fast=fast.next.next;
