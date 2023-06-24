@@ -1,6 +1,6 @@
-package test.linear;
+package linear;
 
-public class CircleListEntranceTest {
+public class CircleListEntrance {
     public static void main(String[] args) throws Exception {
         Node<String> first = new Node<>("aa", null);
         Node<String> second = new Node<>("bb", null);
