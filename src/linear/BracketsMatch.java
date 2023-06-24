@@ -1,8 +1,6 @@
-package test.linear;
+package linear;
 
-import linear.Stack;
-
-public class BracketsMatchTest {
+public class BracketsMatch {
     public static void main(String[] args) {
         String str = "(上海(长安)())";
         boolean match = isMatch(str);
@@ -15,7 +13,7 @@ public class BracketsMatchTest {
      * @return 如果匹配，返回true，如果不匹配，返回false
      */
     public static boolean isMatch(String str){
-        //1。创建栈对象，用来存储左括号
+        //1.创建栈对象，用来存储左括号
         Stack<String> chars = new Stack<>();
         //2.从左往右遍历字符串
         for (int i = 0; i < str.length(); i++) {
