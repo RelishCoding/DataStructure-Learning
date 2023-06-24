@@ -1,6 +1,6 @@
-package test.linear;
+package linear;
 
-public class JosephTest {
+public class Joseph {
     //解决约瑟夫问题
     public static void main(String[] args) {
         //构建循环链表，包含41个结点，分别存储1~41之间的值
