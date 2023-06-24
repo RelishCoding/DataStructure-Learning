@@ -1,14 +1,14 @@
-package test.linear;
+package linear;
 
-public class CircleListCheckTest {
+public class CircleListCheck {
     public static void main(String[] args) throws Exception {
-        Node<String> first = new Node<String>("aa", null);
-        Node<String> second = new Node<String>("bb", null);
-        Node<String> third = new Node<String>("cc", null);
-        Node<String> fourth = new Node<String>("dd", null);
-        Node<String> fifth = new Node<String>("ee", null);
-        Node<String> six = new Node<String>("ff", null);
-        Node<String> seven = new Node<String>("gg", null);
+        Node<String> first = new Node<>("aa", null);
+        Node<String> second = new Node<>("bb", null);
+        Node<String> third = new Node<>("cc", null);
+        Node<String> fourth = new Node<>("dd", null);
+        Node<String> fifth = new Node<>("ee", null);
+        Node<String> six = new Node<>("ff", null);
+        Node<String> seven = new Node<>("gg", null);
 
         //完成结点之间的指向
         first.next = second;
